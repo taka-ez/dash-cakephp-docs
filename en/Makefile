@@ -18,6 +18,7 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees/$(LANG) $(PAPEROPT_$(PAPER)) $(SPHINXO
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
+	@echo "  doc        to make standalone HTML files for Dash docset"
 	@echo "  html       to make standalone HTML files"
 	@echo "  dirhtml    to make HTML files named index.html in directories"
 	@echo "  singlehtml to make a single large HTML file"
@@ -37,6 +38,11 @@ help:
 
 clean:
 	-rm -rf $(BUILDDIR)/*
+
+doc:
+	$(SPHINXBUILD) -b html -D html_theme=cakephp-docset $(ALLSPHINXOPTS) $(BUILDDIR)/docset/$(LANG)
+	@echo
+	@echo "Build finished. The HTML pages for docset are in $(BUILDDIR)/docset/$(LANG)."
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html/$(LANG)

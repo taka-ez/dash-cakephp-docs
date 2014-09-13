@@ -28,6 +28,7 @@ SPHINX_DEPENDENCIES = $(foreach lang, $(LANGS), $(lang)/Makefile)
 # 
 # Loop over the possible languages and call other build targets.
 #
+doc: $(foreach lang, $(LANGS), doc-$(lang))
 html: $(foreach lang, $(LANGS), html-$(lang))
 htmlhelp: $(foreach lang, $(LANGS), htmlhelp-$(lang))
 epub: $(foreach lang, $(LANGS), epub-$(lang))
@@ -36,6 +37,9 @@ pdf: $(foreach lang, $(PDF_LANGS), pdf-$(lang))
 htmlhelp: $(foreach lang, $(LANGS), htmlhelp-$(lang))
 populate-index: $(foreach lang, $(LANGS), populate-index-$(lang))
 
+
+doc-%: $(SPHINX_DEPENDENCIES)
+	cd $* && make doc LANG=$*
 
 # Make the HTML version of the documentation with correctly nested language folders.
 html-%: $(SPHINX_DEPENDENCIES)
