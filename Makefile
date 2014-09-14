@@ -5,7 +5,7 @@
 PYTHON = python
 ES_HOST =
 
-.PHONY: all clean html latexpdf epub htmlhelp website website-dirs
+.PHONY: all clean doc html latexpdf epub htmlhelp website website-dirs
 
 # Languages that can be built.
 LANGS = en es fr ja pt ru ro sr zh
